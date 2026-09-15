@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Accounting | Master Study Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+:root{
+  --bg:#020617;--bg2:#0f172a;--bg3:#1e293b;
+  --fg:#f8fafc;--fg2:#94a3b8;--fg3:#64748b;
+  --blue:#3b82f6;--blue-l:#93c5fd;
+  --green:#10b981;--yellow:#f59e0b;--red:#ef4444;
+  --bdr:#334155;--bdr2:#475569;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--fg2);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{color:var(--fg);font-weight:600;line-height:1.2}
+h1{font-size:2.2rem;margin-bottom:.4rem}
+h2{font-size:1.5rem;margin:2rem 0 1rem;border-bottom:1px solid var(--bdr);padding-bottom:.5rem}
+h3{font-size:1.1rem;margin:1.5rem 0 .75rem;color:var(--blue-l)}
+p{margin-bottom:.9rem}
+strong{color:var(--fg)}
+ul,ol{padding-left:1.5rem;margin-bottom:.75rem}
+li{margin-bottom:.3rem}
+
+/* NAV */
+nav{background:rgba(15,23,42,.92);backdrop-filter:blur(14px);position:sticky;top:0;z-index:200;border-bottom:1px solid var(--bdr);padding:.85rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.logo{font-size:1.1rem;font-weight:700;color:var(--fg);white-space:nowrap;display:flex;align-items:center;gap:.5rem;margin-right:.5rem}
+.logo span{color:var(--blue)}
+.nav-tabs{display:flex;gap:.5rem;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+.nav-tabs::-webkit-scrollbar{height:3px}
+.nav-tabs::-webkit-scrollbar-thumb{background:var(--bdr2);border-radius:99px}
+.tab-btn{background:transparent;color:var(--fg2);border:1px solid transparent;padding:.45rem .9rem;font-size:.85rem;font-weight:500;cursor:pointer;border-radius:6px;transition:all .18s;white-space:nowrap;font-family:'Inter',sans-serif;}
+.tab-btn:hover{color:var(--fg);background:var(--bg3)}
+.tab-btn.active{color:var(--fg);background:rgba(59,130,246,.15);border-color:var(--blue)}
+
+/* PAGES */
+.container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+.page{display:none}
+.page.active{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem;margin:1.25rem 0}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin:1.25rem 0}
+
+/* CARD */
+.card{background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;padding:1.35rem;transition:transform .2s,border-color .2s}
+.card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.card-title{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+
+/* BADGES */
+.badge{padding:.15rem .55rem;border-radius:99px;font-size:.72rem;font-weight:600;border:1px solid}
+.bg{background:rgba(16,185,129,.1);color:var(--green);border-color:rgba(16,185,129,.25)}
+.by{background:rgba(245,158,11,.1);color:var(--yellow);border-color:rgba(245,158,11,.25)}
+
+/* ANALOGY */
+.analogy{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(16,185,129,.04));border-left:4px solid var(--blue);padding:1.25rem;border-radius:0 10px 10px 0;margin:1.25rem 0}
+.analogy-title{font-weight:700;color:var(--blue-l);margin-bottom:.5rem;font-size:1rem}
+.analogy-y{border-left-color:var(--yellow);background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(15,23,42,0))}
+.analogy-y .analogy-title{color:var(--yellow)}
+
+/* TIP / ALERT */
+.tip{background:rgba(245,158,11,.06);border:1px dashed var(--yellow);padding:1rem 1.25rem;border-radius:8px;margin:1rem 0;color:#fcd34d;font-size:.92rem}
+.tip strong{color:var(--yellow)}
+.alert-g{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);padding:1rem 1.25rem;border-radius:8px;margin:1rem 0;color:#6ee7b7;font-size:.92rem}
+
+/* TABLE */
+.tw{overflow-x:auto;background:var(--bg2);border-radius:12px;border:1px solid var(--bdr);margin:1.25rem 0}
+table{width:100%;border-collapse:collapse;text-align:left}
+th,td{padding:.85rem 1rem;border-bottom:1px solid var(--bdr)}
+th{background:var(--bg3);color:var(--fg);font-weight:600;font-size:.9rem}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+
+/* JOURNAL */
+.je{background:#040d1a;border:1px solid var(--bdr);border-left:4px solid var(--blue);border-radius:8px;padding:1.35rem;margin:1.25rem 0;font-family:'Fira Code',monospace;font-size:.88rem;overflow-x:auto}
+.je-hd{display:flex;border-bottom:1px dashed var(--bdr2);padding-bottom:.5rem;margin-bottom:.9rem;color:var(--fg3);font-size:.8rem}
+.je-row{display:flex;align-items:baseline;margin-bottom:.35rem}
+.je-p{flex:1;min-width:0}
+.dr{color:var(--fg);font-weight:500}
+.sfx{color:var(--blue-l);margin-left:.75rem;font-style:italic;font-size:.82rem}
+.cr{color:var(--fg2);padding-left:2.2rem}
+.ad,.ac{width:110px;text-align:right;flex-shrink:0}
+.ad{color:var(--blue-l)}
+.ac{color:var(--green)}
+.jn{color:var(--fg3);font-style:italic;margin:.4rem 0 1.1rem;font-size:.82rem}
+.js{font-weight:700;color:var(--yellow);margin:.75rem 0 .4rem;font-family:'Inter',sans-serif;font-size:.88rem;text-transform:uppercase;letter-spacing:.05em}
+
+/* FORMULA */
+.formula{background:rgba(16,185,129,.06);border-left:4px solid var(--green);padding:1.1rem 1.35rem;border-radius:0 8px 8px 0;margin:1.25rem 0}
+.formula-t{color:var(--green);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+.formula-b{font-size:1.1rem;color:var(--fg);font-family:'Fira Code',monospace;line-height:1.7}
+
+/* ACCORDION */
+details{background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;margin-bottom:.85rem;overflow:hidden}
+summary{padding:.9rem 1.35rem;font-weight:600;color:var(--fg);cursor:pointer;background:var(--bg3);display:flex;justify-content:space-between;align-items:center;list-style:none;font-size:.95rem;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:1.4rem;color:var(--blue);line-height:1}
+details[open] > summary{border-bottom:1px solid var(--bdr)}
+details[open] > summary::after{content:'−'}
+.dc{padding:1.35rem}
+
+/* REVISION GRID */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem;margin:1.25rem 0}
+.rev-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:10px;padding:1.1rem 1.25rem;transition:border-color .2s}
+.rev-card:hover{border-color:var(--blue)}
+.rev-card h4{color:var(--blue-l);font-size:.85rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.rev-card ul{font-size:.88rem;padding-left:1.2rem}
+.rev-card li{margin-bottom:.25rem;color:var(--fg2)}
+.rev-card li strong{color:var(--fg)}
+
+/* QUIZ */
+.q-wrap{max-width:720px;margin:0 auto}
+.q-prog{background:var(--bg3);border-radius:99px;height:6px;margin-bottom:2rem;overflow:hidden}
+.q-bar{background:linear-gradient(90deg,var(--blue),var(--green));height:100%;border-radius:99px;transition:width .4s ease}
+.q-num{font-size:.85rem;color:var(--fg3);margin-bottom:.5rem}
+.q-text{font-size:1.2rem;font-weight:600;color:var(--fg);margin-bottom:1.5rem;line-height:1.5}
+.q-opts{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.5rem}
+.q-opt{background:var(--bg2);border:1.5px solid var(--bdr);color:var(--fg);padding:1rem 1.25rem;border-radius:10px;cursor:pointer;text-align:left;font-size:.95rem;font-family:'Inter',sans-serif;transition:all .2s;display:flex;align-items:center;gap:.75rem}
+.q-opt:hover:not(:disabled){border-color:var(--blue);background:rgba(59,130,246,.06)}
+.q-opt.correct{border-color:var(--green);background:rgba(16,185,129,.1);color:#6ee7b7}
+.q-opt.wrong{border-color:var(--red);background:rgba(239,68,68,.08);color:#fca5a5}
+.q-opt:disabled{cursor:default}
+.q-letter{width:28px;height:28px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;color:var(--fg2)}
+.q-opt.correct .q-letter{background:var(--green);color:#fff}
+.q-opt.wrong .q-letter{background:var(--red);color:#fff}
+.q-exp{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.2);padding:1rem 1.25rem;border-radius:8px;font-size:.9rem;margin-bottom:1.25rem;display:none;line-height:1.6}
+.q-exp.show{display:block}
+.q-next{background:var(--blue);color:#fff;border:none;padding:.75rem 2rem;border-radius:8px;cursor:pointer;font-size:.95rem;font-weight:600;font-family:'Inter',sans-serif;transition:background .2s}
+.q-next:hover{background:#60a5fa;color:var(--bg)}
+.q-score{text-align:center;padding:3rem 1rem}
+.score-ring{width:140px;height:140px;border-radius:50%;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:2.5rem;font-weight:700;border:5px solid var(--green)}
+.score-ring span{font-size:.9rem;font-weight:400;color:var(--fg2)}
+.q-restart{background:var(--bg2);color:var(--fg);border:1px solid var(--bdr);padding:.75rem 2rem;border-radius:8px;cursor:pointer;font-size:.95rem;font-weight:600;font-family:'Inter',sans-serif;margin-left:.75rem;transition:border-color .2s}
+.q-restart:hover{border-color:var(--blue)}
+
+/* UTILS */
+.hl{color:var(--blue-l);font-weight:500}
+.tg{color:var(--green)}
+.tr{color:var(--red)}
+.ty{color:var(--yellow)}
+.sep{border:none;border-top:1px solid var(--bdr);margin:1.5rem 0}
+
+@media(max-width:700px){
+  nav{padding:.75rem 1rem}
+  .container{padding:1rem}
+  h1{font-size:1.7rem}
+  .je-hd{display:none}
+  .je-row{flex-wrap:wrap}
+  .ad,.ac{width:50%;text-align:left;padding-top:.3rem}
+  .ac{text-align:right}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    Corp<span>Acc</span> Mastery
+  </div>
+  <div class="nav-tabs">
+    <button class="tab-btn active" data-tab="pg-shares">Unit 1: Shares</button>
+    <button class="tab-btn" data-tab="pg-deb">Unit 1: Debentures</button>
+    <button class="tab-btn" data-tab="pg-as">Unit 2: AS 10 &amp; AS 2</button>
+    <button class="tab-btn" data-tab="pg-rev">&#9889; Quick Revision</button>
+    <button class="tab-btn" data-tab="pg-quiz">&#127919; Quiz</button>
+  </div>
+</nav>
+
+<!-- ===== PAGE 1: SHARES ===== -->
+<div id="pg-shares" class="page active">
+<div class="container">
+<h1>Share Capital, Forfeiture &amp; Buy-Back</h1>
+<p>From issuance mechanics to buy-backs, underwriting and bonus shares.</p>
+
+<div class="analogy">
+  <div class="analogy-title">&#127829; The Pizza Analogy &mdash; Share Capital at a Glance</div>
+  <p>A company is a massive pizza. <strong>Share Capital</strong> = total pizza. Each <strong>share</strong> = one slice. Shareholders are co-owners.<br>
+  &bull; <strong>Reserve Capital</strong> &mdash; Emergency slice locked in the fridge; only available if the company winds up (Sec 65).<br>
+  &bull; <strong>Capital Reserve</strong> &mdash; A windfall profit piggy-bank from capital profits (e.g., profit on re-issue of forfeited shares).</p>
+</div>
+
+<h2>1. Types of Share Capital</h2>
+<div class="tw"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Authorised Capital</strong></td><td>Maximum capital a company may raise (stated in Memorandum).</td></tr>
+<tr><td><strong>Issued Capital</strong></td><td>Portion of authorised capital offered to the public.</td></tr>
+<tr><td><strong>Subscribed Capital</strong></td><td>Portion of issued capital applied for and taken up by investors.</td></tr>
+<tr><td><strong>Called-up Capital</strong></td><td>Portion of subscribed capital on which payment has been demanded.</td></tr>
+<tr><td><strong>Paid-up Capital</strong></td><td>Portion of called-up capital actually received.</td></tr>
+<tr><td><strong>Calls in Arrears</strong></td><td>Called-up minus Paid-up. Deducted from paid-up in Balance Sheet.</td></tr>
+<tr><td><strong>Reserve Capital</strong></td><td>Uncalled capital reserved only for winding up (Sec 65).</td></tr>
+<tr><td><strong>Capital Reserve</strong></td><td>Reserve from capital profits &mdash; not freely distributable as dividend.</td></tr>
+</tbody>
+</table></div>
+
+<h2>2. Preference vs Equity Shares</h2>
+<div class="tw"><table>
+<thead><tr><th>Basis</th><th>Preference Shares</th><th>Equity Shares</th></tr></thead>
+<tbody>
+<tr><td>Dividend</td><td>Fixed rate, paid first</td><td>Residual &amp; variable</td></tr>
+<tr><td>Voting Rights</td><td>Limited</td><td>Full</td></tr>
+<tr><td>Repayment on winding up</td><td>Priority over equity</td><td>Last to be repaid</td></tr>
+<tr><td>Redemption</td><td>Can be redeemed (Sec 55)</td><td>Generally not redeemable</td></tr>
+<tr><td>Risk</td><td>Lower</td><td>Higher</td></tr>
+</tbody>
+</table></div>
+
+<h2>3. Securities Premium &mdash; Sec 52 (5 Uses Only)</h2>
+<div class="tip"><strong>&#9733; Exam Trap:</strong> Securities Premium is NOT freely distributable. It can ONLY be used for these 5 specific purposes. Any other use is illegal.</div>
+<div class="g2">
+<div class="card"><div class="card-title">5 Permitted Uses</div>
+<ol>
+  <li>Issue fully paid <strong>Bonus Shares</strong></li>
+  <li>Write off <strong>Preliminary Expenses</strong></li>
+  <li>Write off <strong>discount or expenses on issue</strong> of shares/debentures</li>
+  <li>Provide for <strong>premium payable on redemption</strong> of preference shares/debentures</li>
+  <li>Fund <strong>buy-back of own shares</strong> (Sec 68)</li>
+</ol>
+</div>
+<div class="card"><div class="card-title">Special Types of Share Issue</div>
+<ul>
+  <li><strong>Right Shares (Sec 62):</strong> New shares must first be offered to existing shareholders proportionally.</li>
+  <li><strong>ESOP:</strong> Right to buy shares at a future date at a pre-determined price (for employees/directors).</li>
+  <li><strong>Sweat Equity (Sec 54):</strong> Issued at discount or for non-cash consideration (know-how, IP).</li>
+  <li><strong>Bonus Shares:</strong> Free shares from accumulated reserves &mdash; no cash received.</li>
+</ul>
+</div>
+</div>
+
+<h2>4. Pro-Rata Allotment &amp; Forfeiture</h2>
+<div class="analogy">
+  <div class="analogy-title">&#127903; The Over-Subscribed Concert Analogy</div>
+  <p>Only 1,000 VIP passes but 3,000 people applied. You allot pro-rata (1:3 ratio). Extra money paid by people who got fewer tickets is adjusted against their allotment/call dues. Anything left over is refunded.</p>
+</div>
+
+<details>
+<summary>Journal Entries &mdash; Full Share Issue, Forfeiture &amp; Re-issue Set</summary>
+<div class="dc">
+<div class="je">
+<div class="je-hd"><div class="je-p">Particulars</div><div class="ad">Dr. (Rs.)</div><div class="ac">Cr. (Rs.)</div></div>
+
+<div class="js">Step 1 &mdash; Application Money Received</div>
+<div class="je-row"><div class="je-p dr">Bank A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Share Application A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Application money received from applicants)</div>
+
+<div class="js">Step 2 &mdash; Allotment (Pro-rata: excess adjusted, surplus refunded)</div>
+<div class="je-row"><div class="je-p dr">Share Application A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Share Capital A/c (application portion)</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="je-row"><div class="je-p cr">To Share Allotment A/c (excess adjusted to allotment)</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="je-row"><div class="je-p cr">To Bank A/c (excess refunded)</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Application money transferred / adjusted on allotment)</div>
+
+<div class="je-row"><div class="je-p dr">Share Allotment A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Share Capital A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="je-row"><div class="je-p cr">To Securities Premium A/c (if issued at premium)</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Allotment money made due)</div>
+
+<div class="js">Step 3 &mdash; Forfeiture (Premium NOT received)</div>
+<div class="je-row"><div class="je-p dr">Share Capital A/c (called-up value) <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p dr">Securities Premium A/c (unpaid premium) <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Calls in Arrears A/c (total amount unpaid)</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="je-row"><div class="je-p cr">To Share Forfeited A/c (amount already paid)</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Shares forfeited due to non-payment of calls)</div>
+
+<div class="js">Step 4 &mdash; Re-issue of Forfeited Shares (at Discount)</div>
+<div class="je-row"><div class="je-p dr">Bank A/c (cash received) <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p dr">Share Forfeited A/c (discount allowed) <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Share Capital A/c (paid-up value)</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Forfeited shares re-issued)</div>
+
+<div class="js">Step 5 &mdash; Transfer Net Gain to Capital Reserve</div>
+<div class="je-row"><div class="je-p dr">Share Forfeited A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Capital Reserve A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Net gain = Forfeited amount on re-issued shares minus discount allowed on re-issue)</div>
+</div>
+</div>
+</details>
+
+<h2>5. Bonus Shares</h2>
+<div class="tip"><strong>Order of Sources (must follow this sequence):</strong> (1) CRR &rarr; (2) Securities Premium &rarr; (3) General Reserve &rarr; (4) P&amp;L A/c. &nbsp; &#10060; Revaluation Reserves CANNOT be used.</div>
+<details>
+<summary>Journal Entries &mdash; Bonus Issue</summary>
+<div class="dc"><div class="je">
+<div class="je-hd"><div class="je-p">Particulars</div><div class="ad">Dr. (Rs.)</div><div class="ac">Cr. (Rs.)</div></div>
+<div class="js">On Sanction of Bonus</div>
+<div class="je-row"><div class="je-p dr">Capital Redemption Reserve / Securities Premium / General Reserve A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Bonus to Shareholders A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Reserves utilised for bonus issue)</div>
+<div class="js">On Issue of Bonus Shares</div>
+<div class="je-row"><div class="je-p dr">Bonus to Shareholders A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Equity Share Capital A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Bonus shares issued &mdash; no cash inflow, only reserve capitalised)</div>
+</div></div>
+</details>
+
+<h2>6. Buy-Back of Shares (Sec 68&ndash;70)</h2>
+<div class="analogy">
+  <div class="analogy-title">&#128260; The "Destroying Pizza Slices" Analogy</div>
+  <p>Buy-back = the company spends its own savings to repurchase slices from shareholders and <em>permanently destroys</em> those slices. Fewer slices exist &rarr; each remaining slice becomes more valuable (EPS improves). But there&apos;s a legal cap so the company doesn&apos;t bankrupt itself buying back shares.</p>
+</div>
+<div class="g2">
+<div class="card"><div class="card-title">Sources for Buy-Back</div>
+<ul>
+  <li>Free Reserves</li>
+  <li>Securities Premium Account</li>
+  <li>Proceeds of any other specified securities (NOT from proceeds of same equity issue)</li>
+</ul>
+</div>
+<div class="card"><div class="card-title">Key Conditions (Sec 68)</div>
+<ul>
+  <li>Authorised by Articles of Association</li>
+  <li>Max <strong>25%</strong> of paid-up equity capital + free reserves (per financial year)</li>
+  <li>Post buy-back Debt:Equity ratio must be <strong>&le; 2:1</strong></li>
+  <li>Shares must be <strong>fully paid-up</strong></li>
+  <li>Bought-back shares destroyed within <strong>7 days</strong></li>
+</ul>
+</div>
+</div>
+<div class="tip"><strong>Sec 69 &mdash; Mandatory CRR Transfer:</strong> When buy-back is from Free Reserves or Securities Premium, transfer an amount equal to the <strong>nominal (face) value</strong> of shares bought back to Capital Redemption Reserve (CRR).</div>
+<details>
+<summary>Journal Entries &mdash; Buy-Back of Shares</summary>
+<div class="dc"><div class="je">
+<div class="je-hd"><div class="je-p">Particulars</div><div class="ad">Dr. (Rs.)</div><div class="ac">Cr. (Rs.)</div></div>
+<div class="js">1. Payment to Shareholders</div>
+<div class="je-row"><div class="je-p dr">Equity Share Capital A/c (Nominal value) <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p dr">Securities Premium / General Reserve A/c (Premium portion) <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Bank A/c (Total buy-back price paid)</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Shares bought back and cash paid to shareholders)</div>
+<div class="js">2. Mandatory Transfer to CRR (Sec 69)</div>
+<div class="je-row"><div class="je-p dr">General Reserve / Securities Premium A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Capital Redemption Reserve A/c (Nominal value of cancelled shares)</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Transfer to CRR equal to nominal value of shares cancelled &mdash; mandatory under Sec 69)</div>
+</div></div>
+</details>
+
+<h2>7. Underwriting</h2>
+<div class="analogy">
+  <div class="analogy-title">&#128737; The IPO Insurance Analogy</div>
+  <p>Underwriting = buying insurance for a share issue. If the public under-subscribes, underwriters are contractually bound to buy the unsold shares. For taking this risk they earn a commission.<br>Max Commission: <strong>5%</strong> on Shares | <strong>2.5%</strong> on Debentures.</p>
+</div>
+<div class="formula"><div class="formula-t">Net Liability of Each Underwriter</div>
+<div class="formula-b">Gross Liability<br>&minus; Marked Applications<br>&minus; Share of Unmarked Applications (in Gross ratio)<br>&minus; Surplus of any co-underwriter (distributed in Gross ratio)<br>= Net Liability</div></div>
+
+</div></div>
+
+<!-- ===== PAGE 2: DEBENTURES ===== -->
+<div id="pg-deb" class="page">
+<div class="container">
+<h1>Accounting for Debentures</h1>
+<div class="analogy">
+  <div class="analogy-title">&#127970; The Crowd-Loan Analogy</div>
+  <p>Shares make people <em>owners</em>; debentures make them <em>lenders</em>. Instead of going to one bank, the company borrows small amounts from thousands of people and gives each one a certificate (debenture). Fixed interest must be paid regardless of profit/loss &mdash; it is a <strong>charge against profit</strong>, not an appropriation like dividend.</p>
+</div>
+
+<h2>1. Shares vs Debentures</h2>
+<div class="tw"><table>
+<thead><tr><th>Basis</th><th>Shares</th><th>Debentures</th></tr></thead>
+<tbody>
+<tr><td>Nature</td><td>Owners (Proprietors)</td><td>Creditors (Lenders)</td></tr>
+<tr><td>Return</td><td>Dividend &mdash; appropriation of profit</td><td>Interest &mdash; charge against profit</td></tr>
+<tr><td>Voting Rights</td><td>Yes</td><td>No (generally)</td></tr>
+<tr><td>Repayment priority</td><td>Last (residual)</td><td>Before shareholders</td></tr>
+<tr><td>Security</td><td>No charge on assets</td><td>May have fixed / floating charge</td></tr>
+<tr><td>Convertibility</td><td>Cannot convert to debt</td><td>Can convert to shares (if convertible)</td></tr>
+</tbody>
+</table></div>
+
+<h2>2. Issue Conditions &mdash; Prudence Concept Trap</h2>
+<div class="tip"><strong>Key Rule:</strong> If debentures are redeemable at a premium, that future premium is an <em>anticipated loss</em> and MUST be recorded at the time of issue itself &mdash; not at redemption. Credit to <strong>"Premium on Redemption of Debentures A/c"</strong> (shown as a liability).</div>
+
+<div class="tw"><table>
+<thead><tr><th>Issue Condition</th><th>Redemption Condition</th><th>Loss Account(s) Raised?</th></tr></thead>
+<tbody>
+<tr><td>At Par</td><td>At Par</td><td class="tg">None</td></tr>
+<tr><td>At Premium</td><td>At Par</td><td class="tg">None (gain on issue)</td></tr>
+<tr><td>At Discount</td><td>At Par</td><td>Discount on Issue only</td></tr>
+<tr><td>At Par</td><td>At Premium</td><td>Loss on Issue only (for future premium)</td></tr>
+<tr><td>At Discount</td><td>At Premium</td><td class="tr"><strong>Both</strong> &mdash; Discount on Issue + Loss on Issue</td></tr>
+</tbody>
+</table></div>
+
+<details>
+<summary>Worked Example A &mdash; Issued at Discount, Redeemable at Par</summary>
+<div class="dc">
+<p><strong>Scenario:</strong> ABC Ltd issues Rs. 2,00,000 of 11% Debentures at Rs. 95 per Rs. 100 debenture, redeemable at par.</p>
+<div class="je">
+<div class="je-hd"><div class="je-p">Particulars</div><div class="ad">Dr. (Rs.)</div><div class="ac">Cr. (Rs.)</div></div>
+<div class="je-row"><div class="je-p dr">Bank A/c <span class="sfx">Dr.</span></div><div class="ad">1,90,000</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p dr">Discount on Issue of Debentures A/c <span class="sfx">Dr.</span></div><div class="ad">10,000</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To 11% Debentures A/c</div><div class="ad"></div><div class="ac">2,00,000</div></div>
+<div class="jn">(Debentures issued at 5% discount; redeemable at par)</div>
+</div>
+</div>
+</details>
+
+<details>
+<summary>Worked Example B &mdash; Issued at Discount, Redeemable at Premium</summary>
+<div class="dc">
+<p><strong>Scenario:</strong> XYZ Ltd issues Rs. 1,00,000 of 13% Debentures at 5% discount, redeemable at 10% premium.</p>
+<p>Cash received = Rs. 95,000 &nbsp;|&nbsp; Nominal = Rs. 1,00,000 &nbsp;|&nbsp; Redemption premium = Rs. 10,000</p>
+<div class="je">
+<div class="je-hd"><div class="je-p">Particulars</div><div class="ad">Dr. (Rs.)</div><div class="ac">Cr. (Rs.)</div></div>
+<div class="je-row"><div class="je-p dr">Bank A/c <span class="sfx">Dr.</span></div><div class="ad">95,000</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p dr">Discount on Issue of Debentures A/c <span class="sfx">Dr.</span></div><div class="ad">5,000</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p dr">Loss on Issue of Debentures A/c <span class="sfx">Dr.</span></div><div class="ad">10,000</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To 13% Debentures A/c</div><div class="ad"></div><div class="ac">1,00,000</div></div>
+<div class="je-row"><div class="je-p cr">To Premium on Redemption of Debentures A/c</div><div class="ad"></div><div class="ac">10,000</div></div>
+<div class="jn">(Both discount on issue AND anticipated redemption premium recognized at issuance)</div>
+</div>
+</div>
+</details>
+
+<h2>3. DRR &amp; DRI</h2>
+<div class="analogy">
+  <div class="analogy-title">&#128183; The Piggy Bank + Investment Analogy</div>
+  <p>You owe Rs. 50 Lakhs in 5 years. Paying it all at once = cash-flow disaster. So every year you lock a slice of profit into a DRR piggy bank, then invest that money outside the business (DRI investments) so it earns interest. In year 5 you sell the investments, smash the piggy bank, and pay off the debt smoothly. Whatever is left in DRF transfers to <strong>General Reserve</strong>.</p>
+</div>
+<div class="tw"><table>
+<thead><tr><th>Type of Company</th><th>DRR Required</th></tr></thead>
+<tbody>
+<tr><td>All India Financial Institutions / Banking Companies</td><td><span class="badge bg">NIL</span></td></tr>
+<tr><td>NBFCs &amp; HFCs &mdash; Publicly Issued Debentures</td><td><span class="badge by">25%</span></td></tr>
+<tr><td>NBFCs &amp; HFCs &mdash; Privately Placed Debentures</td><td><span class="badge bg">NIL</span></td></tr>
+<tr><td>Other Companies (Listed or Unlisted)</td><td><span class="badge by">25%</span></td></tr>
+</tbody>
+</table></div>
+
+<div class="formula"><div class="formula-t">DRI Investment Requirement</div>
+<div class="formula-b">Invest &ge; 15% of debentures maturing in the year ending 31st March next year<br><span style="font-size:.85rem;font-family:'Inter',sans-serif;color:var(--fg2)">Deadline: 30th April each year. Invest in Govt bonds, FDs or specified securities.</span></div></div>
+
+<details>
+<summary>Sinking Fund Method &mdash; Complete Journal Entry Set</summary>
+<div class="dc">
+<div class="tip"><strong>Last Year Rule:</strong> NO new investment in last year. Sell investments &rarr; redeem debentures &rarr; transfer DRF balance to General Reserve.</div>
+<div class="je">
+<div class="je-hd"><div class="je-p">Particulars</div><div class="ad">Dr. (Rs.)</div><div class="ac">Cr. (Rs.)</div></div>
+
+<div class="js">Year 1 (End) &mdash; Appropriate profit &amp; invest</div>
+<div class="je-row"><div class="je-p dr">Profit &amp; Loss A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Debenture Redemption Fund (DRF) A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Annual instalment appropriated and credited to DRF)</div>
+<div class="je-row"><div class="je-p dr">DRF Investment A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Bank A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Amount invested in specified outside securities)</div>
+
+<div class="js">Subsequent Years &mdash; Interest earned &amp; re-invested</div>
+<div class="je-row"><div class="je-p dr">Bank A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Interest on DRF Investment A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="je-row"><div class="je-p dr">Interest on DRF Investment A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To DRF A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Interest received and transferred to DRF; then fresh instalment + interest re-invested)</div>
+
+<div class="js">Last Year &mdash; Sell investments &amp; redeem debentures</div>
+<div class="je-row"><div class="je-p dr">Bank A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To DRF Investment A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Outside investments sold; proceeds received)</div>
+<div class="je-row"><div class="je-p dr">Debentures A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Debenture Holders A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="je-row"><div class="je-p dr">Debenture Holders A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Bank A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Debentures redeemed; cash paid to holders)</div>
+<div class="je-row"><div class="je-p dr">DRF A/c <span class="sfx">Dr.</span></div><div class="ad">X</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To General Reserve A/c</div><div class="ad"></div><div class="ac">X</div></div>
+<div class="jn">(Balance of DRF transferred to General Reserve after full redemption)</div>
+</div>
+</div>
+</details>
+
+<h2>4. Purchase &amp; Cancellation of Own Debentures</h2>
+<details>
+<summary>Worked Example &mdash; Own Debentures Purchased Below Par &amp; Cancelled</summary>
+<div class="dc">
+<p><strong>Scenario:</strong> A company purchases 700 of its own Rs. 100 debentures at Rs. 95 each from the open market for immediate cancellation.</p>
+<p>Cost = 700 &times; Rs. 95 = <strong>Rs. 66,500</strong> &nbsp;|&nbsp; Nominal = 700 &times; Rs. 100 = <strong>Rs. 70,000</strong> &nbsp;|&nbsp; Gain = <strong>Rs. 3,500</strong></p>
+<div class="je">
+<div class="je-hd"><div class="je-p">Particulars</div><div class="ad">Dr. (Rs.)</div><div class="ac">Cr. (Rs.)</div></div>
+<div class="js">1. Purchase from Market</div>
+<div class="je-row"><div class="je-p dr">Own Debentures A/c <span class="sfx">Dr.</span></div><div class="ad">66,500</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Bank A/c</div><div class="ad"></div><div class="ac">66,500</div></div>
+<div class="jn">(700 own debentures purchased at Rs. 95 each)</div>
+<div class="js">2. Cancellation &amp; Recognition of Gain</div>
+<div class="je-row"><div class="je-p dr">Debentures A/c (Nominal value) <span class="sfx">Dr.</span></div><div class="ad">70,000</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Own Debentures A/c (Cost price)</div><div class="ad"></div><div class="ac">66,500</div></div>
+<div class="je-row"><div class="je-p cr">To Gain on Cancellation of Debentures A/c</div><div class="ad"></div><div class="ac">3,500</div></div>
+<div class="jn">(Debentures cancelled; gain = Nominal value minus cost)</div>
+<div class="js">3. Transfer Gain to Capital Reserve</div>
+<div class="je-row"><div class="je-p dr">Gain on Cancellation of Debentures A/c <span class="sfx">Dr.</span></div><div class="ad">3,500</div><div class="ac"></div></div>
+<div class="je-row"><div class="je-p cr">To Capital Reserve A/c</div><div class="ad"></div><div class="ac">3,500</div></div>
+<div class="jn">(Capital gain transferred to Capital Reserve &mdash; cannot be distributed as dividend)</div>
+</div>
+</div>
+</details>
+
+</div></div>
+
+<!-- ===== PAGE 3: AS 10 & AS 2 ===== -->
+<div id="pg-as" class="page">
+<div class="container">
+<h1>Accounting Standards &mdash; AS 10 &amp; AS 2</h1>
+
+<h2>AS 10: Property, Plant and Equipment (PPE)</h2>
+<div class="alert-g"><strong>Definition:</strong> Tangible items held for production, supply of goods/services, rental, or administrative purposes, expected to be used for <strong>more than one accounting period (&gt; 12 months)</strong>.</div>
+
+<div class="analogy">
+  <div class="analogy-title">&#127959; The "Ready to Produce the First Widget" Rule</div>
+  <p>Capitalize only costs needed to get the asset to its location <em>and</em> into its intended working condition. Once it&apos;s running, maintenance, training, and admin are all expensed. Simple rule: <strong>Before the first widget = capitalize. After = expense.</strong></p>
+</div>
+
+<div class="tw"><table>
+<thead><tr><th class="tg">&#10003; Costs Included (Capitalized)</th><th class="tr">&#10007; Costs Excluded (Expensed to P&amp;L)</th></tr></thead>
+<tbody>
+<tr><td>Purchase price + import duties + non-refundable taxes</td><td>Costs of opening a new facility or business</td></tr>
+<tr><td>Less: Trade discounts and rebates</td><td>Advertising and promotional activities</td></tr>
+<tr><td>Site preparation, delivery &amp; handling charges</td><td>Initial operating losses before commercial production</td></tr>
+<tr><td>Installation and assembly costs</td><td>Staff training costs</td></tr>
+<tr><td>Professional / consultants' fees (architects, engineers)</td><td>General &amp; administrative overheads</td></tr>
+<tr><td>Initial estimate of PV of dismantling/restoration costs</td><td>Relocation / reorganisation costs</td></tr>
+<tr><td>Borrowing costs (if qualifying asset under AS 16)</td><td>Interest on deferred credit to supplier</td></tr>
+</tbody>
+</table></div>
+
+<details>
+<summary>Worked Example &mdash; Zee Ltd: Determining PPE Cost</summary>
+<div class="dc">
+<div class="tw"><table>
+<thead><tr><th>Item</th><th>Amount (Rs.)</th><th>Treatment</th></tr></thead>
+<tbody>
+<tr><td>Supplier invoice + taxes</td><td>25,00,000</td><td class="tg">Capitalized</td></tr>
+<tr><td>Delivery &amp; handling</td><td>2,00,000</td><td class="tg">Capitalized</td></tr>
+<tr><td>Site preparation</td><td>6,00,000</td><td class="tg">Capitalized</td></tr>
+<tr><td>Consultants' fees</td><td>7,00,000</td><td class="tg">Capitalized</td></tr>
+<tr><td>PV of estimated dismantling costs</td><td>3,00,000</td><td class="tg">Capitalized</td></tr>
+<tr style="background:rgba(16,185,129,.08)"><td><strong>Total Capitalized Cost of PPE</strong></td><td><strong>Rs. 43,00,000</strong></td><td></td></tr>
+<tr><td>Interest on deferred credit to supplier</td><td>2,00,000</td><td class="tr">Expensed (finance cost)</td></tr>
+<tr><td>Pre-commercial operating losses</td><td>4,00,000</td><td class="tr">Expensed</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+
+<div class="g2">
+<div class="card"><div class="card-title">Subsequent Measurement Models</div>
+<ul>
+  <li><span class="hl">Cost Model:</span> Cost &minus; Accumulated Depreciation &minus; Impairment Losses</li>
+  <li><span class="hl">Revaluation Model:</span> Fair Value at revaluation date &minus; subsequent depreciation &minus; impairment. Entire <em>class</em> must be revalued. Must be done with sufficient regularity.</li>
+</ul>
+</div>
+<div class="card"><div class="card-title">Revaluation Accounting</div>
+<ul>
+  <li><strong>Value Increases:</strong> Cr. Revaluation Surplus (Reserve) &mdash; NOT P&amp;L</li>
+  <li><strong>Value Decreases:</strong> Dr. P&amp;L (first reduce existing surplus for that asset, then P&amp;L)</li>
+  <li>On disposal: remaining revaluation surplus transferred to Retained Earnings directly</li>
+</ul>
+</div>
+</div>
+<h3>Depreciation Rules under AS 10</h3>
+<ul>
+  <li><strong>Component Approach:</strong> Significant parts depreciated separately (e.g., aircraft engine vs. fuselage).</li>
+  <li>Depreciation starts when asset is <strong>available for use</strong> (intended location &amp; condition).</li>
+  <li>Depreciation continues even when idle (unless fully depreciated).</li>
+  <li><strong>Land</strong> = unlimited life &rarr; NOT depreciated. Buildings ARE depreciated separately.</li>
+  <li>Residual value, useful life, and method reviewed at every year-end.</li>
+</ul>
+
+<hr class="sep">
+
+<h2>AS 2: Valuation of Inventory</h2>
+<div class="analogy analogy-y">
+  <div class="analogy-title">&#128230; The Pessimist Accountant Analogy</div>
+  <p>Accountants follow the Prudence concept: if stock bought at Rs. 100 can only sell for Rs. 80 today, record the Rs. 20 loss <em>immediately</em>. But if it can sell for Rs. 150, wait until it&apos;s actually sold. Hence: value inventory at whichever is <strong>lower &mdash; Cost or NRV.</strong></p>
+</div>
+<div class="formula"><div class="formula-t">Core Principle (AS 2)</div>
+<div class="formula-b">Inventory Value = LOWER of Cost and Net Realisable Value (NRV)</div></div>
+
+<div class="g2">
+<div class="card"><div class="card-title">What is NRV?</div>
+<p>Estimated selling price in ordinary course of business<br><strong>Less:</strong> Estimated costs of completion<br><strong>Less:</strong> Estimated costs necessary to make the sale</p>
+<p class="ty"><strong>Raw Material Exception:</strong> If finished goods will sell at or above cost, raw materials are NOT written down even if their price fell.</p>
+</div>
+<div class="card"><div class="card-title">Cost Formulas Permitted</div>
+<ul>
+  <li><strong>FIFO:</strong> Oldest stock sold first. Closing stock reflects latest (higher) prices.</li>
+  <li><strong>Weighted Average:</strong> Smoothed price; good for homogeneous goods.</li>
+  <li><strong>Specific Identification:</strong> Unique high-value items (cars, machinery).</li>
+</ul>
+<p class="tr"><strong>LIFO is NOT permitted under AS 2.</strong></p>
+</div>
+</div>
+
+<div class="tw"><table>
+<thead><tr><th class="tg">&#10003; Costs Included in Inventory</th><th class="tr">&#10007; Costs Excluded (Expensed)</th></tr></thead>
+<tbody>
+<tr><td>Purchase price + import duties + taxes</td><td>Abnormal waste (material, labour, overhead)</td></tr>
+<tr><td>Direct labour &amp; other direct costs</td><td>Storage costs (unless part of production process)</td></tr>
+<tr><td>Fixed &amp; variable production overheads (absorbed)</td><td>Administrative overheads unrelated to production</td></tr>
+<tr><td>Costs to bring to present location &amp; condition</td><td>Selling &amp; distribution costs</td></tr>
+</tbody>
+</table></div>
+
+<details>
+<summary>Worked Example &mdash; FIFO vs Weighted Average</summary>
+<div class="dc">
+<div class="tw"><table>
+<thead><tr><th>Date</th><th>Transaction</th><th>Units</th><th>Rate (Rs.)</th><th>Amount (Rs.)</th></tr></thead>
+<tbody>
+<tr><td>Jan 1</td><td>Purchase</td><td>10</td><td>50</td><td>500</td></tr>
+<tr><td>Jan 10</td><td>Purchase</td><td>15</td><td>60</td><td>900</td></tr>
+<tr><td>Jan 20</td><td>Purchase</td><td>20</td><td>70</td><td>1,400</td></tr>
+<tr style="background:rgba(59,130,246,.07)"><td colspan="2"><strong>Total</strong></td><td><strong>45</strong></td><td></td><td><strong>2,800</strong></td></tr>
+</tbody>
+</table></div>
+<p><strong>Units Sold = 30 &nbsp;|&nbsp; Closing Inventory = 15 units</strong></p>
+<div class="g2" style="margin-top:1rem">
+<div class="card"><div class="card-title">FIFO Method</div>
+<p>Sell first 30: (10&times;50) + (15&times;60) + (5&times;70)<br>= 500 + 900 + 350 = <strong class="tg">Rs. 1,750 (COGS)</strong></p>
+<p>Closing stock: 15 units at Rs. 70 = <strong class="hl">Rs. 1,050</strong></p>
+<p style="font-size:.85rem;color:var(--fg3)">Higher closing stock in inflation &rarr; better Balance Sheet appearance.</p>
+</div>
+<div class="card"><div class="card-title">Weighted Average Method</div>
+<p>Avg Rate = 2,800 &divide; 45 = <strong>Rs. 62.22/unit</strong></p>
+<p>COGS: 30 &times; 62.22 = <strong class="tg">Rs. 1,866.67</strong></p>
+<p>Closing stock: 15 &times; 62.22 = <strong class="hl">Rs. 933.33</strong></p>
+<p style="font-size:.85rem;color:var(--fg3)">Smoothens price fluctuations; better for frequently traded homogeneous goods.</p>
+</div>
+</div>
+</div>
+</details>
+
+</div></div>
+
+<!-- ===== PAGE 4: QUICK REVISION ===== -->
+<div id="pg-rev" class="page">
+<div class="container">
+<h1>&#9889; Quick Revision &mdash; Units 1 &amp; 2</h1>
+<p>Everything you need in the 24 hours before your exam. Print this page.</p>
+
+<h2>Key Numbers &amp; Limits</h2>
+<div class="rev-grid">
+  <div class="rev-card"><h4>Buy-Back (Sec 68&ndash;70)</h4><ul>
+    <li>Max: <strong>25%</strong> of paid-up equity + free reserves (per year)</li>
+    <li>Post buy-back Debt:Equity &le; <strong>2:1</strong></li>
+    <li>CRR transfer = <strong>Nominal value</strong> of cancelled shares</li>
+    <li>Destroy shares within <strong>7 days</strong></li>
+  </ul></div>
+  <div class="rev-card"><h4>Securities Premium (Sec 52)</h4><ul>
+    <li>Bonus Shares</li>
+    <li>Preliminary Expenses write-off</li>
+    <li>Discount/Expenses on Issue write-off</li>
+    <li>Redemption Premium on Pref Shares / Deb</li>
+    <li>Buy-Back (Sec 68)</li>
+  </ul></div>
+  <div class="rev-card"><h4>DRR &amp; DRI Rules</h4><ul>
+    <li>Banks &amp; AIFIs: <strong>NIL</strong></li>
+    <li>NBFCs (public issue): <strong>25%</strong></li>
+    <li>Others: <strong>25%</strong> of outstanding debentures</li>
+    <li>DRI: &ge; <strong>15%</strong> of maturing debentures by <strong>30 April</strong></li>
+  </ul></div>
+  <div class="rev-card"><h4>Underwriting Commission Limits</h4><ul>
+    <li>Shares: Max <strong>5%</strong></li>
+    <li>Debentures: Max <strong>2.5%</strong></li>
+    <li>Net Liability = Gross &minus; Marked &minus; Unmarked share &minus; Surplus</li>
+  </ul></div>
+  <div class="rev-card"><h4>Bonus Shares &mdash; Source Order</h4><ul>
+    <li>1. Capital Redemption Reserve (CRR)</li>
+    <li>2. Securities Premium A/c</li>
+    <li>3. General Reserve</li>
+    <li>4. P&amp;L Account</li>
+    <li>&#10060; NOT: Revaluation Reserve</li>
+  </ul></div>
+  <div class="rev-card"><h4>AS 2 &mdash; Inventory Valuation</h4><ul>
+    <li>Value = <strong>Lower of Cost and NRV</strong></li>
+    <li>Allowed: FIFO, Weighted Average, Specific ID</li>
+    <li>NOT allowed: <strong>LIFO</strong></li>
+    <li>NRV = Selling Price &minus; Completion Costs &minus; Selling Costs</li>
+  </ul></div>
+  <div class="rev-card"><h4>AS 10 &mdash; Capitalize vs Expense</h4><ul>
+    <li>&#10003; Site prep, delivery, installation, professional fees</li>
+    <li>&#10003; PV of dismantling costs</li>
+    <li>&#10007; Training, admin, advertising</li>
+    <li>&#10007; Pre-commercial operating losses</li>
+    <li>&#10007; Interest (unless qualifying asset &mdash; AS 16)</li>
+  </ul></div>
+  <div class="rev-card"><h4>Debenture Issue &mdash; Loss Recognition</h4><ul>
+    <li>Issued at Discount &rarr; Dr. Discount on Issue</li>
+    <li>Redeemable at Premium &rarr; Dr. Loss on Issue + Cr. Premium on Redemption <em>(at issue date)</em></li>
+    <li>Both: Total loss = Discount + Redemption Premium</li>
+  </ul></div>
+  <div class="rev-card"><h4>Forfeiture &mdash; Capital Reserve Formula</h4><ul>
+    <li>Forfeited A/c balance (on re-issued shares)</li>
+    <li>Less: Discount allowed on re-issue</li>
+    <li>= <strong>Transfer to Capital Reserve</strong></li>
+  </ul></div>
+  <div class="rev-card"><h4>Preference Shares Redemption (Sec 55)</h4><ul>
+    <li>Must be fully paid-up before redemption</li>
+    <li>Fund from: Profits + Fresh Issue of Shares</li>
+    <li>If from profits &rarr; transfer nominal value to CRR</li>
+    <li>Premium on redemption &rarr; from Securities Premium or P&amp;L</li>
+  </ul></div>
+  <div class="rev-card"><h4>Classic Exam Confusions</h4><ul>
+    <li><strong>Capital Reserve &ne; Reserve Capital</strong></li>
+    <li>Interest on Deb = Charge; Dividend = Appropriation</li>
+    <li>DRF surplus after redemption &rarr; <strong>General Reserve</strong></li>
+    <li>Revaluation Surplus &rarr; NOT distributable as dividend</li>
+    <li>Last year of DRF &rarr; <strong>NO new investment</strong></li>
+  </ul></div>
+  <div class="rev-card"><h4>AS 10 &mdash; Depreciation Quick Rules</h4><ul>
+    <li>Land: <strong>NOT depreciated</strong> (unlimited life)</li>
+    <li>Component approach: significant parts depreciated separately</li>
+    <li>Starts when asset is <em>available for use</em></li>
+    <li>Continues even when idle</li>
+    <li>Review residual value, life &amp; method every year-end</li>
+  </ul></div>
+</div>
+
+<h2>Journal Entry Mnemonics</h2>
+<div class="g2">
+<div class="card"><div class="card-title">Forfeiture &mdash; Remember "CCCA"</div>
+<ul>
+  <li><strong>C</strong>alled-up value &rarr; Dr. Share Capital A/c</li>
+  <li><strong>C</strong>redited amount (unpaid premium) &rarr; Dr. Securities Premium</li>
+  <li><strong>C</strong>alls in Arrears &rarr; always on Credit side</li>
+  <li><strong>A</strong>mount paid &rarr; Cr. Share Forfeited A/c</li>
+</ul>
+</div>
+<div class="card"><div class="card-title">Debenture Issue &mdash; Remember "BDLP"</div>
+<ul>
+  <li><strong>B</strong>ank &rarr; Dr. (cash received)</li>
+  <li><strong>D</strong>iscount on Issue &rarr; Dr. (immediate loss)</li>
+  <li><strong>L</strong>oss on Issue &rarr; Dr. (for future redemption premium)</li>
+  <li><strong>P</strong>remium on Redemption &rarr; Cr. (liability created)</li>
+</ul>
+</div>
+</div>
+
+</div></div>
+
+<!-- ===== PAGE 5: QUIZ ===== -->
+<div id="pg-quiz" class="page">
+<div class="container">
+<h1>&#127919; Exam Quiz &mdash; 20 MCQs</h1>
+<p>Test yourself across Units 1 &amp; 2. Get instant answers with explanations.</p>
+<div class="q-wrap">
+  <div id="quiz-area">
+    <div class="q-prog"><div class="q-bar" id="qbar" style="width:0%"></div></div>
+    <div class="q-num" id="qnum">Question 1 of 20</div>
+    <div class="q-text" id="qtext"></div>
+    <div class="q-opts" id="qopts"></div>
+    <div class="q-exp" id="qexp"></div>
+    <button class="q-next" id="qnext" onclick="nextQ()" style="display:none">Next Question &rarr;</button>
+  </div>
+  <div id="quiz-score" style="display:none"></div>
+</div>
+</div></div>
+
+<script>
+// ── TAB SWITCH (bulletproof version) ──────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var id = this.getAttribute('data-tab');
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    this.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+
+// ── QUIZ ──────────────────────────────────────────────────────────
+var QS = [
+  {q:"Securities Premium Account (Sec 52) can be used for which purpose?",
+   o:["Paying cash dividends to shareholders","Writing off preliminary expenses","Funding operational losses","Paying TDS to government"],
+   a:1, e:"Sec 52 permits Securities Premium to be used only for 5 purposes: Bonus shares, preliminary expenses write-off, discount/expenses on issue, redemption premium, and buy-back. Dividends and operational losses are NOT permitted uses."},
+  {q:"Debenture holders are _______ of the company.",
+   o:["Owners (Proprietors)","Creditors (Lenders)","Partners","Guarantors"],
+   a:1, e:"Debenture holders are creditors. They lend money and receive fixed interest as a charge against profit. They do NOT hold ownership rights or voting rights."},
+  {q:"When debentures are issued at discount AND redeemable at premium, the total loss recognized at issue is:",
+   o:["Only the discount on issue","Only the redemption premium","Both discount on issue AND loss on issue (for redemption premium)","Neither; both are capital losses"],
+   a:2, e:"Total anticipated loss = Discount on Issue + Redemption Premium. Both must be recognized at the date of issue under the Prudence Concept. The redemption premium is credited to 'Premium on Redemption of Debentures A/c' (a liability)."},
+  {q:"Which source CANNOT be used for issuing Bonus Shares?",
+   o:["Capital Redemption Reserve","Securities Premium Account","Revaluation Reserve","General Reserve"],
+   a:2, e:"Revaluation Reserve represents unrealised capital profit from asset revaluation. It cannot be used for bonus shares. Only CRR, Securities Premium, General Reserve, and P&L A/c (in order) are permitted sources."},
+  {q:"Under AS 2, inventories should be valued at:",
+   o:["Cost price only","Net Realisable Value only","Lower of Cost and Net Realisable Value","Higher of Cost and Net Realisable Value"],
+   a:2, e:"AS 2 mandates Lower of Cost and NRV (Prudence principle). Losses are recognized immediately when NRV falls below cost, but gains are not recognized until actual sale."},
+  {q:"Which cost formula is NOT permitted under AS 2?",
+   o:["FIFO","LIFO","Weighted Average Cost","Specific Identification"],
+   a:1, e:"LIFO (Last-In, First-Out) is not permitted under AS 2. Only FIFO, Weighted Average, and Specific Identification are allowed."},
+  {q:"Under Sec 69, when buy-back is from Free Reserves, the amount transferred to CRR equals:",
+   o:["The buy-back price paid","The market value of shares","The nominal (face) value of shares bought back","The difference between buy-back price and face value"],
+   a:2, e:"Section 69 requires transfer to CRR equal to the NOMINAL value of shares bought back. This preserves the capital base of the company equivalent to what was redeemed."},
+  {q:"Interest on debentures is:",
+   o:["An appropriation of profit (after P&L)","A charge against profit (debited to P&L)","Optional at directors' discretion","Paid only when profits are adequate"],
+   a:1, e:"Interest on debentures is a contractual obligation and a CHARGE against profits. It is debited to the P&L account regardless of whether profits are made. This is the fundamental difference from dividend (which is an appropriation of profit)."},
+  {q:"After redemption of debentures, the remaining DRF balance is transferred to:",
+   o:["P&L Account","Dividend Equalisation Reserve","General Reserve","Securities Premium Account"],
+   a:2, e:"After redemption, the balance of the Debenture Redemption Fund (DRF) becomes a free reserve and is transferred to General Reserve. It can then be used for dividends or other purposes."},
+  {q:"Maximum underwriting commission allowed on debentures is:",
+   o:["5%","2.5%","10%","1%"],
+   a:1, e:"Maximum underwriting commission: Shares = 5%, Debentures = 2.5%. This limit exists under the Companies Act to prevent excessive costs being charged to the company."},
+  {q:"Under AS 10, which cost is EXCLUDED from the cost of PPE?",
+   o:["Site preparation costs","Professional fees of architects","Initial operating losses before commercial production","Delivery and handling charges"],
+   a:2, e:"Initial operating losses before commercial production are expensed to P&L. They are NOT directly attributable to bringing the asset to its intended working condition."},
+  {q:"Reserve Capital (Sec 65) is:",
+   o:["The balance in General Reserve","Uncalled capital reserved specifically for use only during winding up","The balance in Capital Reserve","A reserve for capital expenditure"],
+   a:1, e:"Reserve Capital is a portion of UNCALLED share capital that the company, by special resolution, declares shall not be called up except in the event of the company being wound up. It is NOT a reserve account."},
+  {q:"The minimum DRI (Debenture Redemption Investment) requirement is:",
+   o:["10% of outstanding debentures","15% of debentures maturing in the next financial year","25% of all debentures","5% of issued debentures"],
+   a:1, e:"Companies must invest at least 15% of the amount of debentures maturing during the year ending 31st March of the NEXT year, on or before 30th April each year. Investment must be in specified securities."},
+  {q:"Net gain on re-issue of forfeited shares is transferred to:",
+   o:["Profit & Loss Account","General Reserve","Securities Premium Account","Capital Reserve"],
+   a:3, e:"Net gain = (Forfeited A/c balance on re-issued shares) minus (discount on re-issue). This is a capital profit and must be transferred to Capital Reserve. It cannot be distributed as dividend."},
+  {q:"Using Weighted Average, if 45 units cost Rs. 2,800 and 30 are sold, closing inventory (15 units) is:",
+   o:["Rs. 1,050","Rs. 933.33","Rs. 1,400","Rs. 800"],
+   a:1, e:"Weighted average rate = 2800 / 45 = Rs. 62.22/unit. Closing inventory = 15 x 62.22 = Rs. 933.33. Note: Rs. 1,050 is the FIFO answer (15 units at Rs. 70 each), not weighted average."},
+  {q:"Under AS 10, depreciation commences when:",
+   o:["The asset is purchased and paid for","The asset is available for use in intended location and condition","The asset is physically installed","The first production run begins"],
+   a:1, e:"AS 10 states depreciation begins when the asset is available for use - meaning when it is in the location and condition necessary for it to be capable of operating as intended by management."},
+  {q:"A company issues 500 shares at a premium of Rs. 20. The holder fails to pay premium and allotment money. On forfeiture, which accounts are DEBITED?",
+   o:["Share Capital and Bank Account","Share Capital and Securities Premium Account","Securities Premium Account only","Calls in Arrears only"],
+   a:1, e:"Forfeiture entry: Dr. Share Capital (called-up value) + Dr. Securities Premium (unpaid amount) = Cr. Calls in Arrears (total unpaid) + Cr. Share Forfeited A/c (amount paid). Both Share Capital and Securities Premium are debited."},
+  {q:"Which of these qualifies as a Bearer Plant under AS 10?",
+   o:["Wheat crops harvested annually","Timber trees grown for lumber","Tea bushes producing tea leaves over many years","Maize planted seasonally"],
+   a:2, e:"A bearer plant must: (1) produce agricultural produce, (2) be expected to bear for >12 months, (3) have remote likelihood of being sold as produce. Tea bushes qualify. Wheat, maize (annual crops) and timber trees (grown for lumber) do NOT qualify."},
+  {q:"The maximum buy-back of equity shares in any one financial year is limited to:",
+   o:["10% of paid-up equity capital","25% of paid-up equity capital and free reserves","50% of free reserves","No limit with board approval"],
+   a:1, e:"Section 68(2)(b): buy-back cannot exceed 25% of the total paid-up equity capital AND free reserves in any one financial year. This protects the company's capital base."},
+  {q:"Under AS 2, which is included in the COST of inventory?",
+   o:["Abnormal wastage of materials","Storage costs (not part of production)","Selling and distribution expenses","Fixed production overheads (systematically allocated)"],
+   a:3, e:"AS 2 includes fixed and variable production overheads in inventory cost when absorbed systematically (based on normal capacity). Excluded are: abnormal waste, non-production storage, admin overheads, and selling/distribution expenses."}
+];
+
+var curr=0, score=0, answered=false;
+
+function renderQ(){
+  if(curr >= QS.length){ showScore(); return; }
+  var q = QS[curr];
+  answered = false;
+  document.getElementById('qbar').style.width = ((curr/QS.length)*100) + '%';
+  document.getElementById('qnum').textContent = 'Question ' + (curr+1) + ' of ' + QS.length;
+  document.getElementById('qtext').textContent = q.q;
+  document.getElementById('qexp').textContent = q.e;
+  document.getElementById('qexp').className = 'q-exp';
+  document.getElementById('qnext').style.display = 'none';
+  var letters = ['A','B','C','D'];
+  var c = document.getElementById('qopts');
+  c.innerHTML = '';
+  q.o.forEach(function(opt, i){
+    var btn = document.createElement('button');
+    btn.className = 'q-opt';
+    btn.innerHTML = '<span class="q-letter">' + letters[i] + '</span>' + opt;
+    btn.onclick = function(){ selectOpt(i); };
+    c.appendChild(btn);
+  });
+}
+
+function selectOpt(i){
+  if(answered) return;
+  answered = true;
+  var q = QS[curr];
+  var btns = document.querySelectorAll('.q-opt');
+  btns.forEach(function(b){ b.disabled = true; });
+  btns[i].classList.add(i===q.a ? 'correct' : 'wrong');
+  if(i !== q.a) btns[q.a].classList.add('correct');
+  if(i === q.a) score++;
+  document.getElementById('qexp').classList.add('show');
+  document.getElementById('qnext').style.display = 'inline-block';
+}
+
+function nextQ(){
+  curr++;
+  renderQ();
+}
+
+function showScore(){
+  document.getElementById('quiz-area').style.display = 'none';
+  var pct = Math.round((score/QS.length)*100);
+  var color = pct>=80 ? 'var(--green)' : pct>=60 ? 'var(--yellow)' : 'var(--red)';
+  var grade = pct>=80 ? 'Excellent! You are exam-ready.' : pct>=60 ? 'Good work! Review the ones you missed.' : 'More revision needed. Go through the notes again.';
+  var s = document.getElementById('quiz-score');
+  s.style.display = 'block';
+  s.innerHTML = '<div class="q-score"><div class="score-ring" style="border-color:'+color+';color:'+color+'">'+score+'/'+QS.length+'<span>'+pct+'%</span></div><h2 style="color:'+color+'">'+pct+'%</h2><p>'+grade+'</p><button class="q-next" onclick="restartQuiz()">Retake Quiz</button><button class="q-restart" onclick="document.querySelector(\'[data-tab=pg-rev]\').click()">Back to Revision</button></div>';
+}
+
+function restartQuiz(){
+  curr=0; score=0; answered=false;
+  document.getElementById('quiz-area').style.display = 'block';
+  document.getElementById('quiz-score').style.display = 'none';
+  document.getElementById('quiz-score').innerHTML = '';
+  renderQ();
+}
+
+renderQ();
+</script>
+</body>
+</html>
